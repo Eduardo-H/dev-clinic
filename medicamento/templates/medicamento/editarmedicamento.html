@@ -1,0 +1,34 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <h1 class="display-4 text-center" id="medium-display">Atulizar medicamento</h1>
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+          <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" name="nome" id="nome" value="{{ medicamento.nome }}">
+            </div>
+
+            <div class="form-group">
+              <label for="marca">Marca</label>
+              <input type="text" class="form-control" name="marca" id="marca" value="{{ medicamento.marca }}">
+            </div>
+
+            <div class="form-group">
+              <label for="quantidade">Quantidade</label>
+              <input type="number" class="form-control" name="quantidade" id="quantidade" value="{{ medicamento.quantidade }}" style="width: 85px;">
+            </div>
+
+            <a href="{% url 'medicamento:menumedicamento' %}" class="btn btn-danger mt-3">Cancelar</a>
+            <input type="submit" class="btn btn-outline-primary mt-3 ml-3" value="Salvar">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

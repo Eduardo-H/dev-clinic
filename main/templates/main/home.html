@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <h1 class="display-4" id="big-display">Gerenciamento de estoque</h1>
+        <div class="col-lg-9 mt-4">
+          <div class="row">
+            {% if medicamentos %}
+              {% for medicamento in medicamentos %}
+                {% if medicamento.quantidade < 10 %}
+                  <div class="col-lg-3">
+                    <div class="card mb-4">
+                      <div class="card-header bg-danger text-white text-center">
+                        <i class="fas fa-exclamation-circle fa-3x"></i>
+                      </div>
+                      <div class="card-body bg-white text-center">
+                        <h5 class="card-title text-dark text-center">{{ medicamento.nome }}</h5>
+                        <p>{{ medicamento.quantidade }} unidades restantes</p>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+              {% for medicamento in medicamentos %}
+
+                {% if medicamento.quantidade < 40 and medicamento.quantidade > 10 %}
+                <div class="col-lg-3">
+                  <div class="card mb-4">
+                    <div class="card-header bg-warning text-white text-center">
+                      <i class="fas fa-exclamation-triangle fa-3x"></i>
+                    </div>
+                    <div class="card-body bg-white text-center">
+                      <h5 class="card-title text-dark text-center">{{ medicamento.nome }}</h5>
+                      <p>{{ medicamento.quantidade }} unidades restantes</p>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <h2 class="text-start text-dark">Sem medicamentos aqui</h2>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="col-lg-3 mt-4">
+          <a href="{% url 'colaboracao:criarcolaboracao' %}" class="btn btn-primary btn-lg btn-block mb-5 py-3">
+            <i class="fas fa-hand-holding-medical fa-3x mb-2"></i>
+            <p style="font-size: 16px;" class="mb-1">ADICIONAR CONTRIBUIÇÃO</p>
+          </a>
+
+          <a href="{% url 'paciente:criarpaciente' %}" class="btn btn-light btn-lg btn-block mb-5 py-3">
+            <i class="fas fa-user-plus fa-3x mb-2"></i>
+            <p style="font-size: 16px;" class="mb-1">ADICIONAR PACIENTE</p>
+          </a>
+
+          <a href="{% url 'medicamento:criarmedicamento' %}" class="btn btn-dark btn-lg btn-block text-white mb-5 py-3">
+            <i class="fas fa-pills fa-3x mb-2"></i>
+            <p style="font-size: 16px;" class="mb-1">ADICIONAR MEDICAMENTO</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

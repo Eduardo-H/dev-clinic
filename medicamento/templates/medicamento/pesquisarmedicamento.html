@@ -1,0 +1,62 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <h1 class="display-4 text-center" id="medium-display">Medicamentos</h1>
+
+      <div class="row my-5">
+        <div class="col-lg-4 mx-auto">
+          <a href="{% url 'medicamento:criarmedicamento' %}" class="btn btn-primary btn-block mb-4"><i class="fas fa-plus mr-1"></i> CADASTRAR MEDICAMENTO</a>
+        </div>
+        <div class="col-lg-6 ml-auto">
+          <form method="GET">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do medicamento">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-dark">Pesquisar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% if medicamentos %}
+      <div class="row my-2">
+        <h2 class="ml-3">{{ medicamentos.count }} medicamento{{ medicamentos.count|pluralize }} encontrado{{ medicamentos.count|pluralize }}</h2>
+      </div>
+
+      <div class="row mt-5">
+
+          {% for medicamento in medicamentos %}
+            <div class="col-lg-3">
+              <div class="card mb-4">
+                <div class="card-header bg-dark text-white text-center py-4">
+                  <h3 style="font-size: 25px;">{{ medicamento.nome }}</h3>
+                </div>
+                <div class="card-body">
+                  {% if medicamento.marca %}
+                    <p class="lead" style="font-size: 18px;">Marca: {{ medicamento.marca }}</p>
+                    <p class="lead mb-0" style="font-size: 18px;">Quantidade em estoque: {{ medicamento.quantidade }}</p>
+                  {% else %}
+                    <p class="lead" style="font-size: 18px; margin-bottom: 43px;">Quantidade em estoque: {{ medicamento.quantidade }}</p>
+                  {% endif %}
+
+                </div>
+                <div class="card-footer text-center">
+                  <a href="{% url 'medicamento:vermedicamento' medicamento.id %}" class="btn btn-outline-primary">Detalhes</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+      {% else %}
+      <div class="row my-2">
+        <h2 class="ml-3">Nenhum medicamento encontrado</h2>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

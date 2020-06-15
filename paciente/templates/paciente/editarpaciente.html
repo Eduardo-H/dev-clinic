@@ -1,0 +1,46 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <h1 class="display-4 text-center">Atualizar paciente</h1>
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-6">
+          <form method="POST">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" name="nome" id="nome" value="{{ paciente.nome }}">
+            </div>
+
+            <div class="form-group">
+              <label for="idade">Idade</label>
+              <input type="text" class="form-control" name="idade" id="idade" value="{{ paciente.idade }}">
+            </div>
+
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input type="text" class="form-control" name="cpf" id="cpf" value="{{ paciente.cpf }}">
+            </div>
+
+            <div class="form-group">
+              <label for="sexo">Sexo*</label>
+              <select class="form-control" name="sexo" id='sexo'>
+                {% if paciente.sexo == 'Masculino' %}
+                  <option value="Masculino" selected>Masulino</option>
+                  <option value="Feminino">Feminino</option>
+                {% else %}
+                  <option value="Masculino">Masulino</option>
+                  <option value="Feminino" selected>Feminino</option>
+                {% endif %}
+              </select>
+            </div>
+
+            <a href="{% url 'paciente:menupaciente' %}" class="btn btn-danger mt-3">Cancelar</a>
+            <button type="submit" class="btn btn-outline-primary mt-3 ml-3">Salvar</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

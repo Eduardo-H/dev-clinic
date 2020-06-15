@@ -1,0 +1,57 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <h1 class="display-4 text-center">Pacientes</h1>
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-4 mx-auto">
+        <a href="{% url 'paciente:criarpaciente' %}" class="btn btn-primary btn-block mb-4"><i class="fas fa-plus mr-1"></i> CADASTRAR PACIENTE</a>
+      </div>
+      <div class="col-lg-6 ml-auto">
+        <form method="GET">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" name="nome" class="form-control" placeholder="Nome do paciente">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-dark">Pesquisar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      {% if pacientes %}
+        <h2 class="ml-3">{{ pacientes.count }} paciente{{ pacientes.count|pluralize }} encontrado{{ pacientes.count|pluralize }}</h2>
+      {% else %}
+        <h2>Nenhum paciente encontrado</h2>
+      {% endif %}
+    </div>
+
+    {% if pacientes %}
+      <div class="row mt-3">
+        {% for paciente in pacientes %}
+          <div class="col-lg-3">
+            <div class="card mb-4">
+              <div class="card-header bg-dark text-white text-center py-4">
+                <h3 style="font-size: 20px; height: 50px;" class="mb-0"">{{ paciente.nome }}</h3>
+              </div>
+              <div class="card-body">
+                <p class="lead" style="font-size: 18px;">Idade: {{ paciente.idade }}</p>
+                <p class="lead" style="font-size: 18px;">CPF: {{ paciente.cpf }}</p>
+                <p class="lead mb-0" style="font-size: 18px;">Sexo: {{ paciente.sexo }}</p>
+              </div>
+              <div class="card-footer text-center">
+                <a href="{% url 'paciente:verpaciente' paciente.id %}" class="btn btn-outline-primary">Detalhes</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="display-4 text-center mb-5" id="big-display">Adicionar colaboração</h1>
+          {% if erro %}
+            <div class="alert alert-danger">
+              <h3 class="text-center">{{ erro }}</h3>
+            </div>
+          {% endif %}
+          {% if pacientes %}
+          <h3>Selecione o paciente</h3>
+            <form method="POST">
+              {% csrf_token %}
+
+              {% for paciente in pacientes %}
+                <div class="form-group mb-4">
+                    <div class="card">
+                      <div class="card-header text-center">
+                        <input type="radio" name="paciente" id="{{ paciente.id }}" value="{{ paciente.id }}">
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">{{ paciente.nome }}</h5>
+                        <p>Idade: {{ paciente.idade }}</p>
+                        <p>CPF: {{ paciente.cpf }}</p>
+                        <p>Sexo: {{ paciente.sexo }}</p>
+                      </div>
+                    </div>
+                </div>
+              {% endfor %}
+
+              <h3>Selecione o medicamento</h3>
+
+              <div class="form-group">
+                <select class="form-control" name="medicamento" id="id_medicamento">
+                  {% for medicamento in medicamentos %}
+                    <option id="{{ medicamento.id }}" value="{{ medicamento.id }}">{{ medicamento.nome }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <a href="{% url 'colaboracao:menucolaboracao' %}" class="btn btn-danger mt-3">Cancelar</a>
+              <button type="submit" class="btn btn-outline-primary mt-3 ml-3">Salvar</button>
+            </form>
+          {% else %}
+            <h3 class="text-center">Nenhum paciente encontrado</h3>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

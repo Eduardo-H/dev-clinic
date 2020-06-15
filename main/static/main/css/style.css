@@ -1,0 +1,60 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#login-form {
+  margin-top: 150px !important;
+}
+
+#back-button {
+  margin-left: 85px;
+}
+
+/* Medias Queries */
+
+@media(max-width:991px) {
+  .navbar-brand {
+    margin-left: 0 !important;
+  }
+
+  #logo-navbar {
+    margin-left: 0 !important;
+  }
+
+  #sair-button {
+    margin-top: 20px;
+    margin-left: 0 !important;
+  }
+}
+
+@media(max-width:768px) {
+  #giant-display {
+    font-size: 30px !important;
+    text-align: center;
+  }
+
+  #big-display {
+    font-size: 40px !important;
+    text-align: center;
+  }
+
+  #medium-display {
+    font-size: 50px;
+  }
+
+  #card-row {
+    margin-top: 0 !important;
+  }
+
+  #back-button {
+    width: 100px;
+    margin-left: 38%;
+    margin-right: 42%;
+    margin-bottom: 25px;
+  }
+
+  #login-form {
+    margin-top: 120px !important;
+    box-shadow: 1px -2px 20px #7A7A7A !important;
+  }
+}

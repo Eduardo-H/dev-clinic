@@ -1,0 +1,37 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <a href="{% url 'colaboracao:menucolaboracao' %}" class="btn btn-outline-primary" id="back-button">Voltar</a>
+    <div class="container">
+      <h1 class="display-4 text-center" id="big-display">Detalhes sobre contribuição</h1>
+      <div class="row justify-content-center mt-5" >
+        <div class="col-lg-8">
+          <h2 class="">Contribuição</h2>
+          <div class="alert alert-secondary">
+            <p><strong>Data:</strong> {{ colaboracao.data|date:'j M Y' }}</p>
+            <p class="mb-0"><strong>Operador:</strong> {{ colaboracao.user.name }}</p>
+          </div>
+
+          <h2 class="mt-4">Paciente</h2>
+          <div class="alert alert-secondary">
+            <p><strong>Nome:</strong> {{ colaboracao.paciente.nome }}</p>
+            <p><strong>Idade:</strong> {{ colaboracao.paciente.idade }} anos</p>
+            <p><strong>CPF:</strong> {{ colaboracao.paciente.cpf }}</p>
+            <p class="mb-0"><strong>Sexo:</strong> {{ colaboracao.paciente.sexo }}</p>
+          </div>
+
+          <h2 class="mt-4">Medicamento</h2>
+          <div class="alert alert-secondary">
+            {% if colaboracao.medicamento.marca %}
+              <p><strong>Nome:</strong> {{ colaboracao.medicamento.nome }}</p>
+              <p class="mb-0"><strong>Marca:</strong> {{ colaboracao.medicamento.marca }}</p>
+            {% else %}
+              <p class="mb-0"><strong>Nome:</strong> {{ colaboracao.medicamento.nome }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

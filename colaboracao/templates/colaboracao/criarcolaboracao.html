@@ -1,0 +1,26 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <h1 class="display-4 text-center mt-5 mb-3" id="big-display">Adicionar nova colaboração</h1>
+      <p class="lead text-center mb-5">Digite o nome do paciente que irá receber a colaboração.</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form method="GET">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="nome">Paciente</label>
+              <div class="input-group">
+                <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do paciente">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-dark">Pesquisar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

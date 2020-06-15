@@ -1,0 +1,60 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+  <section class="py-5">
+    <div class="container">
+      <h1 class="display-4 text-center" id="medium-display">Medicamentos</h1>
+
+      <div class="row my-5">
+        <div class="col-lg-4 mx-auto">
+          <a href="{% url 'medicamento:criarmedicamento' %}" class="btn btn-primary btn-block mb-4"><i class="fas fa-plus mr-1"></i> CADASTRAR MEDICAMENTO</a>
+        </div>
+        <div class="col-lg-6 ml-auto">
+          <form method="GET">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do medicamento">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-dark">Pesquisar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          {% if medicamentos %}
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" class="text-center">Nome</th>
+                    <th scope="col" class="text-center">Quantidade</th>
+                    <th scope="col" class="text-center"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for medicamento in medicamentos %}
+                      <tr>
+                        <th scope="row" class="text-center">{{ medicamento.id }}</th>
+                        <th class="text-center">{{ medicamento.nome }}</th>
+                        <th class="text-center">{{ medicamento.quantidade }}</th>
+                        <th class="text-center"><a href="{% url 'medicamento:vermedicamento' medicamento.id %}" class="btn btn-primary">Detalhes</a></th>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+          {% else %}
+            <h2>Sem medicamentos cadastrados</h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
