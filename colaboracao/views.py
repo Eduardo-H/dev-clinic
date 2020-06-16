@@ -8,7 +8,7 @@ from django.db.models import Q
 
 @login_required
 def menucolaboracao(request):
-    colaboracoes = Colaboracao.objects.all()
+    colaboracoes = Colaboracao.objects.order_by('-data')
     return render(request, 'colaboracao/menucolaboracao.html', {'colaboracoes':colaboracoes})
 
 
@@ -31,7 +31,7 @@ def criarcolaboracao(request):
         try:
             formulario = FormColaboracao(request.POST)
             formulario.save()
-            return redirect('../../')
+            return redirect('../')
         except ValueError:
             return render(request, 'colaboracao/criarcolaboracaofinal.html',
             {'formulario':FormColaboracao(), 'pacientes':paciente,
