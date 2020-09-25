@@ -35,13 +35,6 @@ def criarmedicamento(request):
             return render(request, 'medicamento/criarmedicamento.html', {'formulario':FormMedicamento(), 'erro':'Medicamento já existente'})
 
 @login_required
-def vermedicamento(request, pk_medicamento):
-    if request.method == 'GET':
-        medicamento = get_object_or_404(Medicamento, pk=pk_medicamento)
-        return render(request, 'medicamento/vermedicamento.html', {'medicamento':medicamento})
-
-
-@login_required
 def deletarmedicamento(request, pk_medicamento):
     medicamento = get_object_or_404(Medicamento, pk=pk_medicamento)
 

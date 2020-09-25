@@ -3,7 +3,7 @@
 {% block content %}
   <section class="py-5">
     <div class="container">
-      <h1 class="display-4 text-center" id="medium-display">Medicamentos</h1>
+      <h1 class="display-4 text-center big-display">Medicamentos</h1>
 
       <div class="row my-5">
         <div class="col-lg-4 mx-auto">
@@ -25,7 +25,7 @@
       </div>
       {% if medicamentos %}
       <div class="row my-2">
-        <h2 class="ml-3">{{ medicamentos.count }} medicamento{{ medicamentos.count|pluralize }} encontrado{{ medicamentos.count|pluralize }}</h2>
+        <h3 class="ml-3">{{ medicamentos.count }} medicamento{{ medicamentos.count|pluralize }} encontrado{{ medicamentos.count|pluralize }}</h3>
       </div>
 
       <div class="row mt-5">
@@ -46,7 +46,7 @@
 
                 </div>
                 <div class="card-footer text-center">
-                  <a href="{% url 'medicamento:vermedicamento' medicamento.id %}" class="btn btn-outline-primary">Detalhes</a>
+                  <a href="{% url 'medicamento:editarmedicamento' medicamento.id %}" class="btn btn-warning"><i class="fas fa-edit mr-1"></i>Editar</a>
                 </div>
               </div>
             </div>

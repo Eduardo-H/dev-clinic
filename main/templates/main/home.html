@@ -4,7 +4,7 @@
   <section class="py-5">
     <div class="container">
       <div class="row">
-        <h1 class="display-4" id="big-display">Gerenciamento de estoque</h1>
+        <h1 class="display-4 big-display text-lg-start text-center">Gerenciamento de estoque</h1>
         <div class="col-lg-9 mt-4">
           <div class="row">
             {% if medicamentos %}
@@ -21,27 +21,22 @@
                       </div>
                     </div>
                   </div>
-                {% endif %}
-              {% endfor %}
-
-              {% for medicamento in medicamentos %}
-
-                {% if medicamento.quantidade < 40 and medicamento.quantidade > 10 %}
-                <div class="col-lg-3">
-                  <div class="card mb-4">
-                    <div class="card-header bg-warning text-white text-center">
-                      <i class="fas fa-exclamation-triangle fa-3x"></i>
-                    </div>
-                    <div class="card-body bg-white text-center">
-                      <h5 class="card-title text-dark text-center">{{ medicamento.nome }}</h5>
-                      <p>{{ medicamento.quantidade }} unidades restantes</p>
+                {% elif medicamento.quantidade < 40 and medicamento.quantidade > 10 %}
+                  <div class="col-lg-3">
+                    <div class="card mb-4">
+                      <div class="card-header bg-warning text-white text-center">
+                        <i class="fas fa-exclamation-triangle fa-3x"></i>
+                      </div>
+                      <div class="card-body bg-white text-center">
+                        <h5 class="card-title text-dark text-center">{{ medicamento.nome }}</h5>
+                        <p>{{ medicamento.quantidade }} unidades restantes</p>
+                      </div>
                     </div>
                   </div>
-                </div>
                 {% endif %}
               {% endfor %}
             {% else %}
-              <h2 class="text-start text-dark">Sem medicamentos aqui</h2>
+              <h2 class="text-start text-dark medium-display">Sem medicamentos aqui</h2>
             {% endif %}
           </div>
         </div>

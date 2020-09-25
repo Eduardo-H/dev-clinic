@@ -20,20 +20,23 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    
+
     <base href="/">
     <link rel="stylesheet" href="../../../static/main/css/style.css">
 
     <title>Login</title>
   </head>
   <body>
-    <section class="py-5">
+    <section class="bg-dark">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-4 bg-light shadow rounded" id="login-form">
-            <img src="{% static 'main/Logo.png' %}" class="img-fluid mt-4 ml-4" alt="Logo">
-            <h1 class="text-center mt-3">Log In</h1>
-            <form class="text-center mt-4"method="POST">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+          <div class="col-md-4 bg-light shadow-lg rounded" id="login-form">
+            <div class="d-flex justify-content-center mt-4">
+              <img src="{% static 'main/Logo.png' %}" class="img-fluid" alt="Logo">
+            </div>
+
+            <h4 class="text-center mt-3">Log In</h4>
+            <form class="text-center mt-3"method="POST">
               {% csrf_token %}
               <div class="form-group">
                 <div class="input-group">

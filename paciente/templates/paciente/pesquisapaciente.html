@@ -3,7 +3,7 @@
 {% block content %}
 <section class="py-5">
   <div class="container">
-    <h1 class="display-4 text-center">Pacientes</h1>
+    <h1 class="display-4 text-center big-display">Pacientes</h1>
     <div class="row justify-content-center mt-5">
       <div class="col-lg-4 mx-auto">
         <a href="{% url 'paciente:criarpaciente' %}" class="btn btn-primary btn-block mb-4"><i class="fas fa-plus mr-1"></i> CADASTRAR PACIENTE</a>
@@ -26,9 +26,9 @@
 
     <div class="row mt-5">
       {% if pacientes %}
-        <h2 class="ml-3">{{ pacientes.count }} paciente{{ pacientes.count|pluralize }} encontrado{{ pacientes.count|pluralize }}</h2>
+        <h3 class="ml-3">{{ pacientes.count }} paciente{{ pacientes.count|pluralize }} encontrado{{ pacientes.count|pluralize }}</h3>
       {% else %}
-        <h2>Nenhum paciente encontrado</h2>
+        <h3>Nenhum paciente encontrado</h3>
       {% endif %}
     </div>
 
@@ -38,15 +38,15 @@
           <div class="col-lg-3">
             <div class="card mb-4">
               <div class="card-header bg-dark text-white text-center py-4">
-                <h3 style="font-size: 20px; height: 50px;" class="mb-0"">{{ paciente.nome }}</h3>
+                <h3 class="mb-0 medium-display">{{ paciente.nome|striptags|truncatechars:23 }}</h3>
               </div>
               <div class="card-body">
-                <p class="lead" style="font-size: 18px;">Idade: {{ paciente.idade }}</p>
-                <p class="lead" style="font-size: 18px;">CPF: {{ paciente.cpf }}</p>
-                <p class="lead mb-0" style="font-size: 18px;">Sexo: {{ paciente.sexo }}</p>
+                <p class="card-info">Idade: {{ paciente.idade }}</p>
+                <p class="card-info">CPF: {{ paciente.cpf }}</p>
+                <p class="card-info mb-0">Sexo: {{ paciente.sexo }}</p>
               </div>
               <div class="card-footer text-center">
-                <a href="{% url 'paciente:verpaciente' paciente.id %}" class="btn btn-outline-primary">Detalhes</a>
+                <a href="{% url 'paciente:verpaciente' paciente.id %}" class="btn btn-primary">Detalhes</a>
               </div>
             </div>
           </div>

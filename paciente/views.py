@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Paciente
 from django.contrib.auth.decorators import login_required
 from .forms import FormPaciente
+from django.urls import reverse
+
 
 @login_required
 def menupaciente(request):
@@ -52,7 +54,7 @@ def editarpaciente(request, pk_paciente):
         try:
             formulario = FormPaciente(request.POST, instance=paciente)
             formulario.save()
-            return redirect('../../')
+            return redirect('paciente:menupaciente')
         except ValueError:
             return render(request, 'paciente/editarpaciente.html', {'formulario':formulario, 'erro':'Não foi possível editar o paciente'})
 
@@ -62,4 +64,4 @@ def deletarpaciente(request, pk_paciente):
 
     if request.method == 'POST':
         paciente.delete()
-        return redirect('../')
+        return redirect('paciente:menupaciente')

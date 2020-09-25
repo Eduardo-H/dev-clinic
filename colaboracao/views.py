@@ -6,6 +6,7 @@ from paciente.models import Paciente
 from medicamento.models import Medicamento
 from django.db.models import Q
 
+
 @login_required
 def menucolaboracao(request):
     colaboracoes = Colaboracao.objects.order_by('-data')
@@ -26,8 +27,6 @@ def criarcolaboracao(request):
         else:
             return render(request, 'colaboracao/criarcolaboracao.html', {'procurapaciente':FormProcuraPaciente()})
     else:
-        formulario = FormColaboracao(request.POST)
-        print(formulario)
         try:
             formulario = FormColaboracao(request.POST)
             formulario.save()
@@ -49,11 +48,3 @@ def deletarcolaboracao(request, pk_colaboracao):
 def vercolaboracao(request, pk_colaboracao):
     colaboracao = get_object_or_404(Colaboracao, pk=pk_colaboracao)
     return render(request, 'colaboracao/vercolaboracao.html', {'colaboracao':colaboracao})
-
-##########
-# Função #
-##########
-
-def procurarpacientepornome(nomepaciente):
-    nomes = Paciente.objects.filter(nome__contains=nomepaciente)
-    return nomes

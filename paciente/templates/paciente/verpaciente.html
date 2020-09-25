@@ -2,19 +2,16 @@
 
 {% block content %}
   <section class="py-5">
-    <a href="{% url 'paciente:menupaciente' %}" class="btn btn-outline-primary" id="back-button">Voltar</a>
     <div class="container">
-      <h1 class="display-4 text-center" id="giant-display">Detalhes sobre {{ paciente.nome }}</h1>
+      <h1 class="display-4 text-center big-display">Detalhes sobre {{ paciente.nome }}</h1>
       <div class="row justify-content-center mt-5">
         <div class="col-lg-4">
           <div class="card">
-            <div class="card-header bg-dark text-center text-white py-3">
-              <h3>{{ paciente.nome }}</h3>
-            </div>
             <div class="card-body">
-              <p class="lead">Idade: {{ paciente.idade }} anos</p>
-              <p class="lead">CPF: {{ paciente.cpf }}</p>
-              <p class="lead mb-0">Sexo: {{ paciente.sexo }}</p>
+              <p style="font-weight: 300;">Nome: {{ paciente.nome }}</p>
+              <p style="font-weight: 300;">Idade: {{ paciente.idade }} anos</p>
+              <p style="font-weight: 300;">CPF: {{ paciente.cpf }}</p>
+              <p class="mb-0" style="font-weight: 300;">Sexo: {{ paciente.sexo }}</p>
             </div>
             <div class="card-footer text-center">
               <a href="{% url 'paciente:editarpaciente' paciente.id %}" class="btn btn-warning mr-3"><i class="fas fa-pencil-alt"></i> Editar</a>
@@ -22,8 +19,11 @@
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</button>
               </form>
-
             </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'paciente:menupaciente' %}" class="btn btn-primary"><i class="fas fa-arrow-left mr-2"></i>Voltar</a>
           </div>
         </div>
       </div>

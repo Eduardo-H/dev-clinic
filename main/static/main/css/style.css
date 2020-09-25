@@ -6,10 +6,54 @@ body {
   margin-top: 140px;
 }
 
-#back-button {
-  margin-left: 85px;
+#tabela-colaboracao {
+  height: 450px;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
+#tabela-colaboracao th {
+  font-weight: 400;
+}
+
+#tabela-colaboracao::-webkit-scrollbar {
+  width: 10px;
+}
+
+#tabela-colaboracao::-webkit-scrollbar-track {
+  background: #B1B1B1;
+}
+
+#tabela-colaboracao::-webkit-scrollbar-thumb {
+  background: #343a40;
+}
+
+body::-webkit-scrollbar {
+  width: 9px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #B1B1B1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #343a40;
+}
+
+/* Font sizes */
+
+.card-info {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.big-display {
+  font-size: 45px;
+}
+
+.medium-display {
+  font-size: 20px;
+}
 
 /* Medias Queries */
 
@@ -29,29 +73,16 @@ body {
 }
 
 @media(max-width:768px) {
-  #giant-display {
-    font-size: 30px !important;
-    text-align: center;
+  .big-display {
+    font-size: 35px;
   }
 
-  #big-display {
-    font-size: 40px !important;
-    text-align: center;
-  }
-
-  #medium-display {
-    font-size: 50px;
+  .medium-display {
+    font-size: 15px;
   }
 
   #card-row {
     margin-top: 0 !important;
-  }
-
-  #back-button {
-    width: 100px;
-    margin-left: 38%;
-    margin-right: 42%;
-    margin-bottom: 25px;
   }
 
   #login-form {

@@ -4,10 +4,11 @@
 
   <section class="py-5">
     <div class="container">
-      <h1 class="display-4 text-center mb-5">Colaborações</h1>
+      <h1 class="display-4 text-center mb-4 big-display">Colaborações</h1>
       <div class="row justify-content-center">
         <div class="col-md-4">
-          <a href="{% url 'colaboracao:criarcolaboracao' %}" class="btn btn-primary btn-lg btn-block align-self-center"> <span style="font-size: 16px;">ADICIONAR NOVA COLABORAÇÃO</span>
+          <a href="{% url 'colaboracao:criarcolaboracao' %}" class="btn btn-primary btn-lg btn-block align-self-center">
+            <span style="font-size: 16px;">ADICIONAR NOVA COLABORAÇÃO</span>
           </a>
         </div>
       </div>
@@ -15,7 +16,7 @@
       <div class="row justify-content-center mt-5">
         <div class="col-md-12 text-center">
           {% if colaboracoes %}
-            <div class="table-responsive ">
+            <div class="table-responsive" id="tabela-colaboracao">
               <table class="table table-hover">
                 <thead class="thead-dark">
                   <tr>
@@ -29,18 +30,18 @@
                 <tbody>
                   {% for colaboracao in colaboracoes %}
                     <tr>
-                      <th class="text-center">{{ colaboracao.id }}</th>
-                      <th class="text-center">{{ colaboracao.data|date:'j M Y' }}</th>
-                      <th class="text-center">{{ colaboracao.paciente.nome }}</th>
-                      <th class="text-center">{{ colaboracao.medicamento.nome }}</th>
-                      <th class="text-center"><a href="{% url 'colaboracao:vercolaboracao' colaboracao.id %}" class="btn btn-primary">Detalhes</a></th>
+                      <th class="text-center py-3">{{ colaboracao.id }}</th>
+                      <th class="text-center py-3">{{ colaboracao.data|date:'d/m/Y' }}</th>
+                      <th class="text-center py-3">{{ colaboracao.paciente.nome }}</th>
+                      <th class="text-center py-3">{{ colaboracao.medicamento.nome }}</th>
+                      <th class="text-center py-2"><a href="{% url 'colaboracao:vercolaboracao' colaboracao.id %}" class="btn btn-primary">Detalhes</a></th>
                     </tr>
                   {% endfor %}
                 </tbody>
               </table>
             </div>
           {% else %}
-            <h2 class="display-4">Sem colaborações ainda :(</h2>
+            <h3>Nenhuma colaboração cadastrada</h3>
           {% endif %}
         </div>
       </div>

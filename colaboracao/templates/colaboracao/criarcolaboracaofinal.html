@@ -4,15 +4,15 @@
   <section class="py-5">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <h1 class="display-4 text-center mb-5" id="big-display">Adicionar colaboração</h1>
+        <div class="col-lg-6">
+          <h1 class="display-4 text-center big-display mb-5">Adicionar colaboração</h1>
           {% if erro %}
             <div class="alert alert-danger">
               <h3 class="text-center">{{ erro }}</h3>
             </div>
           {% endif %}
           {% if pacientes %}
-          <h3>Selecione o paciente</h3>
+          <h4>Selecione o paciente</h4>
             <form method="POST">
               {% csrf_token %}
 
@@ -42,8 +42,11 @@
                 </select>
               </div>
 
-              <a href="{% url 'colaboracao:menucolaboracao' %}" class="btn btn-danger mt-3">Cancelar</a>
-              <button type="submit" class="btn btn-outline-primary mt-3 ml-3">Salvar</button>
+              <div class="d-flex justify-content-end">
+                <a href="{% url 'colaboracao:menucolaboracao' %}" class="btn btn-danger mt-3 mr-4">Cancelar</a>
+                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+              </div>
+
             </form>
           {% else %}
             <h3 class="text-center">Nenhum paciente encontrado</h3>

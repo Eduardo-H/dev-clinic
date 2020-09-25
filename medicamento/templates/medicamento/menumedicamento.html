@@ -3,7 +3,7 @@
 {% block content %}
   <section class="py-5">
     <div class="container">
-      <h1 class="display-4 text-center" id="medium-display">Medicamentos</h1>
+      <h1 class="display-4 text-center big-display">Medicamentos</h1>
 
       <div class="row my-5">
         <div class="col-lg-4 mx-auto">
@@ -27,29 +27,34 @@
       <div class="row">
         <div class="col-lg-12">
           {% if medicamentos %}
-            <div class="table-responsive">
+            <div class="table-responsive" id="tabela-colaboracao">
               <table class="table table-hover">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col" class="text-center">#</th>
                     <th scope="col" class="text-center">Nome</th>
                     <th scope="col" class="text-center">Quantidade</th>
-                    <th scope="col" class="text-center"></th>
+                    <th scope="col" class="text-center">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for medicamento in medicamentos %}
                       <tr>
-                        <th scope="row" class="text-center">{{ medicamento.id }}</th>
-                        <th class="text-center">{{ medicamento.nome }}</th>
-                        <th class="text-center">{{ medicamento.quantidade }}</th>
-                        <th class="text-center"><a href="{% url 'medicamento:vermedicamento' medicamento.id %}" class="btn btn-primary">Detalhes</a></th>
+                        <th scope="row" class="text-center py-3">{{ medicamento.id }}</th>
+                        <th class="text-center py-3">{{ medicamento.nome }}</th>
+                        <th class="text-center py-3">{{ medicamento.quantidade }}</th>
+                        <th class="text-center py-2">
+                          <a href="{% url 'medicamento:editarmedicamento' medicamento.id %}" class="btn btn-warning mr-2 mb-2"><i class="fas fa-edit mr-md-1"></i>Editar</a>
+                          <form method="POST" class="d-inline" action="{% url 'medicamento:deletarmedicamento' medicamento.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger mr-2 mb-2"><i class="fas fa-trash mr-1"></i>Deletar</button>
+                          </form>
+                        </th>
                       </tr>
                   {% endfor %}
                 </tbody>
               </table>
             </div>
-
           {% else %}
             <h2>Sem medicamentos cadastrados</h2>
           {% endif %}

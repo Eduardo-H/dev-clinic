@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 't^0hnifk*y3_l(_-lvseu=b3y7w+dng+!j9ey-ptq8(1)z1#7h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['eduho.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition

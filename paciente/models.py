@@ -7,7 +7,6 @@ class Paciente(models.Model):
         ('Masculino', 'Masculino')
     )
 
-
     nome = models.CharField(max_length=200)
     idade = models.BigIntegerField()
     cpf = models.CharField(max_length=11)
