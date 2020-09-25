@@ -2,10 +2,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#login-form {
-  margin-top: 140px;
-}
-
 #tabela-colaboracao {
   height: 450px;
   overflow: auto;
@@ -83,10 +79,5 @@ body::-webkit-scrollbar-thumb {
 
   #card-row {
     margin-top: 0 !important;
-  }
-
-  #login-form {
-    margin-top: 120px !important;
-    box-shadow: 1px -2px 20px #7A7A7A !important;
   }
 }
